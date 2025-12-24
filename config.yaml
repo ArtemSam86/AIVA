@@ -1,0 +1,60 @@
+system:
+  mode: "auto"
+  threads:
+    vision_enabled: true
+    voice_enabled: true
+    bluetooth_enabled: true
+
+power:
+  enabled: true
+  i2c_bus: 1
+  i2c_address: 0x42  # Стандарт для Waveshare UPS HAT C
+  shutdown_voltage: 3.2
+  warning_voltage: 3.5
+  check_interval: 60
+
+vision:
+  camera_mode: "imx500"
+  imx500:
+    width: 640
+    height: 480
+    fps: 5
+    # Проверьте этот путь на вашей OS (Bookworm)
+    model_config: "/usr/share/rpi-camera-assets/imx500_mobilenet_ssd.json"
+    confidence_threshold: 0.5
+
+voice:
+  speech_recognition:
+    model_path: "./voice_models/vosk-model-small-ru-0.22"
+    sample_rate: 16000
+    trigger_words: ["ассистент", "помощник", "робот"]
+    energy_threshold: 300
+    
+  text_to_speech:
+    # Замените на имя скачанной модели
+    model_path: "./voice_models/piper/ru_RU-irina-medium.onnx"
+    config_path: "./voice_models/piper/ru_RU-irina-medium.onnx.json"
+    speaker_id: 0
+    
+  commands:
+    what_do_you_see: ["что видишь", "что там", "опиши", "посмотри"]
+    stop_listening: ["стоп", "хватит", "отмена"]
+    check_battery: ["заряд", "батарея", "питание"]
+    
+  responses:
+    greeting: "Система готова."
+    ready: "Слушаю."
+    no_objects: "Ничего не вижу."
+    processing: "Секунду..."
+    error: "Ошибка системы."
+
+bluetooth:
+  headphones:
+    mac_address: "XX:XX:XX:XX:XX:XX"  # <--- ВСТАВЬТЕ MAC АДРЕС ВАШИХ НАУШНИКОВ
+    name: "Headphones"
+    auto_connect: true
+    reconnect_attempts: 5
+  audio:
+    profile: "headset_head_unit" # Важно для микрофона
+    sample_rate: 16000
+    channels: 1

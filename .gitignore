@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+logs/
+*.log
+*.wav
+voice_models/
+vision_models/
