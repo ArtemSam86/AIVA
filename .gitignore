@@ -8,3 +8,4 @@ vision_models/
 target/
 create_project_struct.py
 create_project_struct_2.py
+.idea
