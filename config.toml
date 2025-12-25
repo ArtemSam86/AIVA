@@ -1,0 +1,62 @@
+[system]
+name = "VisionVoice Zero2W + IMX500"
+version = "3.5"
+log_level = "info"
+# Single-threaded для экономии RAM
+max_threads = 1
+
+[camera]
+# IMX500 аппаратное ускорение
+width = 640
+height = 480
+model = "imx500_mobilenet_ssd"
+# Доступные модели: mobilenet_ssd, efficientdet_lite0
+detection_threshold = 0.55
+inference_timeout = 5
+# Пропуск кадров для экономии (IMX500 все равно быстрый)
+frame_skip = 1
+# Низкое разрешение для превью
+preview_size = [320, 240]
+
+[tts]
+# Легковесная модель
+model_path = "voice_models/piper/ru_RU-dmitri-low.onnx"
+sample_rate = 16000
+buffer_size = 512
+max_phrase_length = 80
+# Приоритетные сообщения (не прерывать)
+priority_phrases = ["батарея", "выключение", "критично"]
+
+[bluetooth]
+enabled = false  # Экономия ресурсов
+device_name = "VisionVoice"
+
+[power]
+# Waveshare UPS HAT C (INA219)
+enabled = true
+i2c_bus = 1
+i2c_address = 0x42
+# Напряжения для 2x18650 (7.4V номинал)
+shutdown_voltage = 6.4       # Критично низкое
+warning_voltage = 6.8        # Предупреждение
+full_voltage = 8.4           # Полный заряд
+check_interval = 30          # Секунды
+# Действия при низком заряде
+auto_shutdown = true
+warning_repeat_interval = 300  # 5 минут
+
+[detection]
+scan_interval = 15
+cooldown_period = 8
+enabled_classes = ["person", "car", "dog", "cat", "bird"]
+max_detections = 3
+# Уведомления о специфичных объектах
+announce_person = true
+announce_vehicle = true
+
+[optimization]
+# Агрессивная оптимизация для 512MB
+use_swap = true
+force_gc_interval = 20  # Каждые 20 циклов
+cache_enabled = false   # Отключаем кэш для экономии RAM
+low_power_mode = false  # Включать при <20% батареи
