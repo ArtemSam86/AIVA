@@ -1,5 +1,5 @@
 [system]
-name = "VisionVoice Zero2W + IMX500"
+name = "AIVA Zero2W + IMX500"
 version = "3.5"
 log_level = "info"
 # Single-threaded для экономии RAM
@@ -29,7 +29,7 @@ priority_phrases = ["батарея", "выключение", "критично"
 
 [bluetooth]
 enabled = false  # Экономия ресурсов
-device_name = "VisionVoice"
+device_name = "AIVA"
 
 [power]
 # Waveshare UPS HAT C (INA219)

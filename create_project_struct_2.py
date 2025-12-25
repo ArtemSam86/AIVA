@@ -4,7 +4,7 @@ files = {
     # ==================== КОНФИГУРАЦИЯ ====================
     "config.toml": """
 [system]
-name = "VisionVoice Zero2W + IMX500"
+name = "AIVA Zero2W + IMX500"
 version = "3.5"
 log_level = "info"
 # Single-threaded для экономии RAM
@@ -34,7 +34,7 @@ priority_phrases = ["батарея", "выключение", "критично"
 
 [bluetooth]
 enabled = false  # Экономия ресурсов
-device_name = "VisionVoice"
+device_name = "aiva"
 
 [power]
 # Waveshare UPS HAT C (INA219)
@@ -207,7 +207,7 @@ async fn main() -> Result<()> {
 
 fn print_banner() {
     info!("╔════════════════════════════════════════╗");
-    info!("║   VisionVoice Zero2W + IMX500         ║");
+    info!("║   AIVA Zero2W + IMX500                 ║");
     info!("║   Raspberry Pi Zero 2W                 ║");
     info!("║   + AI Camera IMX500                   ║");
     info!("║   + Waveshare UPS HAT C                ║");
@@ -1169,7 +1169,7 @@ if __name__ == "__main__":
 set -e
 
 echo "╔════════════════════════════════════════════════╗"
-echo "║  VisionVoice: Pi Zero 2W + IMX500 + UPS HAT  ║"
+echo "║  AIVA: Pi Zero 2W + IMX500 + UPS HAT           ║"
 echo "╚════════════════════════════════════════════════╝"
 echo ""
 
@@ -1301,9 +1301,9 @@ cargo build --release
 
 # Systemd сервис
 echo "⚙️  Создание systemd сервиса..."
-sudo tee /etc/systemd/system/visionvoice.service > /dev/null << EOF
+sudo tee /etc/systemd/system/aiva.service > /dev/null << EOF
 [Unit]
-Description=VisionVoice AI Camera Service
+Description=AIVA AI Camera Service
 After=network.target
 
 [Service]
@@ -1345,12 +1345,12 @@ echo "   - I2C: i2cdetect -y 1"
 echo "   - UPS: python3 scripts/ups_monitor.py"
 echo ""
 echo "3. Запуск сервиса:"
-echo "   sudo systemctl start visionvoice"
-echo "   sudo systemctl enable visionvoice"
+echo "   sudo systemctl start aiva"
+echo "   sudo systemctl enable aiva"
 echo ""
 echo "4. Мониторинг:"
-echo "   sudo systemctl status visionvoice"
-echo "   journalctl -u visionvoice -f"
+echo "   sudo systemctl status aiva"
+echo "   journalctl -u aiva -f"
 echo ""
 echo "⚠️  ВАЖНО:"
 echo "   - Используйте качественное питание 5V/3A"
@@ -1360,7 +1360,7 @@ echo ""
 """,
 
     # ==================== README ====================
-    "README.md": """# 🎯 VisionVoice для Pi Zero 2W + IMX500 + UPS HAT C
+    "README.md": """# 🎯 AIVA для Pi Zero 2W + IMX500 + UPS HAT C
 
 Полнофункциональная система компьютерного зрения с автономным питанием.
 
@@ -1394,8 +1394,8 @@ echo ""
 
 ```bash
 # Клонирование
-git clone https://github.com/yourusername/visionvoice-zero-imx500.git
-cd visionvoice-zero-imx500
+git clone https://github.com/ArtemSam86/AIVA.git
+cd aiva
 
 # Установка (30-60 минут)
 chmod +x deploy.sh
@@ -1405,7 +1405,7 @@ chmod +x deploy.sh
 sudo reboot
 
 # После перезагрузки - запуск
-sudo systemctl start visionvoice
+sudo systemctl start aiva
 """,
 }
 

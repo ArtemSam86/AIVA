@@ -1,4 +1,4 @@
-# 🎯 VisionVoice для Pi Zero 2W + IMX500 + UPS HAT C
+# 🎯 AIVA (Artificial Intelligence Vision Assistant) для Pi Zero 2W + IMX500 + UPS HAT C
 
 Полнофункциональная система компьютерного зрения с автономным питанием.
 
@@ -30,17 +30,24 @@
 
 ## 🚀 Быстрый старт
 
-```bash
 # Клонирование
-git clone https://github.com/yourusername/visionvoice-zero-imx500.git
-cd visionvoice-zero-imx500
+```bash
+git clone https://github.com/ArtemSam86/AIVA.git
+cd aiva
+```
 
 # Установка (30-60 минут)
+```bash
 chmod +x deploy.sh
 ./deploy.sh
+```
 
 # ОБЯЗАТЕЛЬНАЯ перезагрузка
+```bash
 sudo reboot
+```
 
 # После перезагрузки - запуск
-sudo systemctl start visionvoice
+```bash
+sudo systemctl start aiva
+```

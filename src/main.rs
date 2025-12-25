@@ -106,7 +106,7 @@ async fn main() -> Result<()> {
 
 fn print_banner() {
     info!("╔════════════════════════════════════════╗");
-    info!("║   VisionVoice Zero2W + IMX500         ║");
+    info!("║   AIVA Zero2W + IMX500                 ║");
     info!("║   Raspberry Pi Zero 2W                 ║");
     info!("║   + AI Camera IMX500                   ║");
     info!("║   + Waveshare UPS HAT C                ║");

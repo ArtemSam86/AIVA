@@ -2,7 +2,7 @@
 set -e
 
 echo "╔════════════════════════════════════════════════╗"
-echo "║  VisionVoice: Pi Zero 2W + IMX500 + UPS HAT  ║"
+echo "║  AIVA: Pi Zero 2W + IMX500 + UPS HAT           ║"
 echo "╚════════════════════════════════════════════════╝"
 echo ""
 
@@ -134,16 +134,16 @@ cargo build --release
 
 # Systemd сервис
 echo "⚙️  Создание systemd сервиса..."
-sudo tee /etc/systemd/system/visionvoice.service > /dev/null << EOF
+sudo tee /etc/systemd/system/aiva.service > /dev/null << EOF
 [Unit]
-Description=VisionVoice AI Camera Service
+Description=AIVA AI Camera Service
 After=network.target
 
 [Service]
 Type=simple
 User=$USER
 WorkingDirectory=$(pwd)
-ExecStart=$(pwd)/target/release/vision_voice_zero_imx500
+ExecStart=$(pwd)/target/release/aiva
 Restart=on-failure
 RestartSec=30
 StandardOutput=journal
@@ -178,12 +178,12 @@ echo "   - I2C: i2cdetect -y 1"
 echo "   - UPS: python3 scripts/ups_monitor.py"
 echo ""
 echo "3. Запуск сервиса:"
-echo "   sudo systemctl start visionvoice"
-echo "   sudo systemctl enable visionvoice"
+echo "   sudo systemctl start aiva"
+echo "   sudo systemctl enable aiva"
 echo ""
 echo "4. Мониторинг:"
-echo "   sudo systemctl status visionvoice"
-echo "   journalctl -u visionvoice -f"
+echo "   sudo systemctl status aiva"
+echo "   journalctl -u aiva -f"
 echo ""
 echo "⚠️  ВАЖНО:"
 echo "   - Используйте качественное питание 5V/3A"
